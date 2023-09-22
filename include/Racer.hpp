@@ -2,16 +2,20 @@
 #define RACER_HPP
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime> 
 #include <random>
+#include <thread>
 
 class Racer {
 public:
     Racer(const unsigned int& position=0)
-        :m_position(position), m_distribution(1, 5) {}
+        :m_position(position) {}
 
     friend std::ostream& operator<<(std::ostream& os, const Racer& racer);
 
     void operator()();
+    void race();
     
     unsigned int getPosition() const;
     unsigned int getVelocity() const;
@@ -22,8 +26,6 @@ private:
     unsigned int m_position{};
     unsigned int m_active_racer{1};
     unsigned int m_velocity{0};
-    std::mt19937 m_velocityGenerator;
-    std::uniform_int_distribution<unsigned char> m_distribution;
 };
 
 #endif
