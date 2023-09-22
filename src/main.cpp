@@ -1,7 +1,8 @@
 #include <iostream>
 #include "Racer.hpp"
+#include "Team.hpp"
 
 int main(int argc, char** argv){
-    std::cout<<"Oldu balımsuuu <3 :) \n";
-    std::cin.get();
+    Team t1{}, t2{}, t3{};
+    std::cout<<t1<<t2<<t3;
 }
