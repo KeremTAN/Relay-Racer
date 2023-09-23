@@ -2,10 +2,27 @@
 
 unsigned int Team::counter = 0;
 
-std::ostream& operator<<(std::ostream& os, const Team& team){
-    return os<<team.m_team_id<<". Team, "<<team.m_racer;
+Team::Team()
+    :m_team_id(++counter) {
+
+    m_racers.reserve(4);
+
+    for(int i{}; i<4; i++)
+        m_racers.emplace_back(Racer((i+1), i*100));
+}
+
+std::ostream& operator<<(std::ostream& os, const Team& team) {
+    return os<<"---------------------------- "
+    <<team.m_team_id<<". Team ------------------------------\n"
+    <<team.m_racers[0]<<team.m_racers[1]<<team.m_racers[2]<<team.m_racers[3]
+    <<"-------------------------------------------------------------------\n";
 }
 
 void Team::startRace() {
-    m_racer.race();
+
+    m_racers[0].race(nullptr);
+
+    for(int i{1}; i < m_racers.size(); i++) {
+        m_racers[i].race(&m_racers[i-1]);
+    }
 }

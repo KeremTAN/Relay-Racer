@@ -8,8 +8,7 @@ class Team {
 public:
     static unsigned int counter;
 
-    Team()
-        :m_team_id(++counter) {};
+    Team();
 
     friend std::ostream& operator<<(std::ostream& os, const Team& team);
 
@@ -17,8 +16,9 @@ public:
     void race();
     
 private:
-    Racer m_racer{};
+    std::vector<Racer> m_racers;
     unsigned int m_team_id{};
+    bool isPrintable{1};
 };
 
 #endif

@@ -8,23 +8,25 @@
 #include <thread>
 
 class Racer {
+
 public:
-    Racer(const unsigned int& position=0)
-        :m_position(position) {}
+    Racer(const unsigned int& racer_number=1,
+        const unsigned int& position=0)
+        :m_racer_number(racer_number), m_position(position) {}
 
     friend std::ostream& operator<<(std::ostream& os, const Racer& racer);
 
     void operator()();
-    void race();
+    void race(const Racer* const);
     
+    void setPosition(unsigned int& newPosition);
     unsigned int getPosition() const;
     unsigned int getVelocity() const;
-    unsigned int getActiveRacer() const;
+    unsigned int getRacerNumber() const;
         
 private:
-    //const unsigned int m_team_number;
     unsigned int m_position{};
-    unsigned int m_active_racer{1};
+    unsigned int m_racer_number{};
     unsigned int m_velocity{0};
 };
 
