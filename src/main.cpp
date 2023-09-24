@@ -2,19 +2,13 @@
 #include "Team.hpp"
 
 int main(int argc, char** argv){
-    std::mutex mtx;
-    std::condition_variable cv;
     std::vector<Team> teams(5);
     std::vector<int> printableTeams {0, 2, 3};
 
-    /*
     for(const int&  printableTeamIx: printableTeams)
         teams[printableTeamIx].setPrintable(1);
-    */
-    
 
-    for(auto it =teams.rbegin(); it!=teams.rend(); ++it)
-        it->startRace();
+    
 
     for(auto it =Team::championsList.begin(); it!=Team::championsList.end(); ++it)
          std::cout<<"The team id that comes "<<" is "<<it->second<<'\n';
