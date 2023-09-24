@@ -13,27 +13,28 @@ struct Config {
 
 class Team {
 public:
-    static std::vector<unsigned int> s_championsList;
-    static std::unique_ptr<Config> config;
+    static std::unique_ptr<Config> s_config;
 
     Team();
     ~Team() = default;
 
-    friend std::ostream& operator<<(std::ostream& os, const Team& team);
+    friend std::ostream& operator<<(std::ostream&, const Team&);
 
-    void operator()();
-    void startRace();
+    void        operator()();
+    void        startRace();
 
-    bool isPrintable() const;
-    void setPrintable(const bool& isPrintable) const;
+    bool        isPrintable() const;
+    void        setPrintable(const bool&) const;
 
     static void printChampions();
 
 private:
-    static unsigned int counter;
-    std::vector<Racer> m_racers;
-    unsigned int m_team_id{};
-    mutable bool m_printable{};
+    static unsigned int                 counter;
+    static std::vector<unsigned int>    s_championsList;
+
+    std::vector<Racer>                  m_racers;
+    unsigned int                        m_team_id{};
+    mutable bool                        m_printable{};
 };
 
 #endif

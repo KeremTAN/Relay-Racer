@@ -18,8 +18,8 @@ public:
 
     friend std::ostream& operator<<(std::ostream& os, const Racer& racer);
 
-    void race(const Racer* const, const Team* const);
-    unsigned int getPosition() const;
+    void            race(const Racer* const, const Team* const);
+    unsigned int    getPosition() const;
         
 private:
     unsigned int m_position{};

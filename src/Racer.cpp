@@ -28,7 +28,7 @@ void Racer::race(
          
          if(counter > 100 && (this+1) != nullptr)
             (this+1)->m_position=m_position;
-   
+            
          std::cout<<*team;
       }
    }
