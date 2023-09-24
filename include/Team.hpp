@@ -13,12 +13,13 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Team& team);
 
     void startRace();
-    void race();
+    bool isPrintable() const;
+    void setPrintable(const bool& isPrintable) const;
     
 private:
     std::vector<Racer> m_racers;
     unsigned int m_team_id{};
-    bool isPrintable{1};
+    mutable bool m_printable{};
 };
 
 #endif

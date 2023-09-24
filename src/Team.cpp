@@ -7,8 +7,8 @@ Team::Team()
 
     m_racers.reserve(4);
 
-    for(int i{}; i<4; i++)
-        m_racers.emplace_back(Racer((i+1), i*100));
+    for(int i{1}; i<5; i++)
+        m_racers.emplace_back(Racer(i));
 }
 
 std::ostream& operator<<(std::ostream& os, const Team& team) {
@@ -20,9 +20,13 @@ std::ostream& operator<<(std::ostream& os, const Team& team) {
 
 void Team::startRace() {
 
-    m_racers[0].race(nullptr);
+    m_racers[0].race(nullptr, this);
 
     for(int i{1}; i < m_racers.size(); i++) {
-        m_racers[i].race(&m_racers[i-1]);
+        m_racers[i].race(&m_racers[i-1], this);
     }
 }
+
+bool Team::isPrintable() const { return m_printable; }
+
+void Team::setPrintable(const bool& isPrintable) const { m_printable=isPrintable; }
