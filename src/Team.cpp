@@ -1,14 +1,16 @@
 #include "Team.hpp"
 
 unsigned int Team::counter = 0;
+std::multimap<unsigned int,unsigned int,
+    std::greater<unsigned int>> Team::championsList{};
 
 Team::Team()
     :m_team_id(++counter) {
 
-    m_racers.reserve(4);
-
-    for(int i{1}; i<5; i++)
-        m_racers.emplace_back(Racer(i));
+        m_racers.reserve(4);
+        
+        for(int i{1}; i<5; i++)
+            m_racers.emplace_back(Racer(i));
 }
 
 std::ostream& operator<<(std::ostream& os, const Team& team) {
@@ -25,6 +27,8 @@ void Team::startRace() {
     for(int i{1}; i < m_racers.size(); i++) {
         m_racers[i].race(&m_racers[i-1], this);
     }
+
+    Team::championsList.emplace_hint(championsList.end(), m_racers.back().getPosition(), m_team_id);
 }
 
 bool Team::isPrintable() const { return m_printable; }

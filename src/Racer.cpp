@@ -9,7 +9,7 @@ std::ostream& operator<<(std::ostream& os, const Racer& racer) {
 
 void Racer::operator()() {
      while (m_position < 400) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        std::this_thread::sleep_for(std::chrono::seconds(1));
         srand(static_cast<unsigned int>(time(nullptr)));
         m_velocity= rand()%5+1;
         m_position+=m_velocity;

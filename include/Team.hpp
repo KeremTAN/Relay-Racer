@@ -1,12 +1,17 @@
 #ifndef TEAM_HPP
 #define TEAM_HPP
 
-#include "Racer.hpp"
+#include <map>
 #include <thread>
+#include <shared_mutex>
+
+#include "Racer.hpp"
 
 class Team {
 public:
     static unsigned int counter;
+    static std::multimap<unsigned int,unsigned int,
+        std::greater<unsigned int>> championsList;
 
     Team();
 
@@ -20,6 +25,7 @@ private:
     std::vector<Racer> m_racers;
     unsigned int m_team_id{};
     mutable bool m_printable{};
+    //std::shared_mutex& m_mapMutex;
 };
 
 #endif
