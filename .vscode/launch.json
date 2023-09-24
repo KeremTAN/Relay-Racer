@@ -16,6 +16,13 @@
             "environment": [],
             "externalConsole": true,
             "MIMode": "lldb",
+            "windows": {
+                "miDebuggerPath": "c:/mingw/bin/gdb.exe"
+            },
+            "linux": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "/usr/bin/gdb"
+            },
             "preLaunchTask": "Make"
         }
     ]

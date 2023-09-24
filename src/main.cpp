@@ -7,7 +7,7 @@ int main(int argc, char** argv){
     std::vector<std::thread> threads;
     Team::config = std::make_unique<Config>();
 
-    std::vector<int> printableTeams {2};
+    std::vector<int> printableTeams {0, 2, 5, 7};
 
     for(const int&  printableTeamIx: printableTeams)
         teams[printableTeamIx].setPrintable(1);

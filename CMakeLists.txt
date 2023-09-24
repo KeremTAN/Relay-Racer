@@ -14,10 +14,10 @@ set(PROJECT_SOURCES
     ${PROJECT_SOURCE_DIR}/Racer.cpp
     ${PROJECT_SOURCE_DIR}/Team.cpp)
 
-    set(PROJECT_HEADERS
+set(PROJECT_HEADERS
     ${PROJECT_INCLUDE_DIR}/Racer.hpp
     ${PROJECT_INCLUDE_DIR}/Team.hpp)
 
-    include_directories(${PROJECT_INCLUDE_DIR})
+include_directories(${PROJECT_INCLUDE_DIR})
 
-    add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
+add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
