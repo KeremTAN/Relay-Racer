@@ -2,7 +2,6 @@
 
 unsigned int                Team::counter = 0;
 std::vector<unsigned int>   Team::s_championsList{};
-std::unique_ptr<Config>     Team::s_config = nullptr;
 
 Team::Team()
     :m_team_id(++counter) {
@@ -27,7 +26,6 @@ void Team::operator()(){
     m_racers[0].race(nullptr, this);
 
     for(int i{1}; i < m_racers.size(); i++) {
-        std::unique_lock<std::shared_mutex> lock(s_config->mutex_);
         m_racers[i].race(&m_racers[i-1], this);
     }
 

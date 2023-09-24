@@ -4,8 +4,8 @@
 int main(int argc, char** argv){
 
     std::vector<Team> teams(400);
-    std::vector<int> printableTeams{};
-    Team::s_config = std::make_unique<Config>();
+    std::vector<int> printableTeams{1,3,4, 5, 6, 7};
+    Racer::s_config = std::make_unique<Config>();
 
     std::vector<std::thread> threads;
     threads.reserve(400);

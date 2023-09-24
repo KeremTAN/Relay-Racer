@@ -5,13 +5,20 @@
 #include <cstdlib>
 #include <ctime> 
 #include <random>
+#include <shared_mutex>
 #include <thread>
 
 class Team;
 
+struct Config {
+    std::shared_mutex mutex_;
+};
+
 class Racer {
 
 public:
+    static std::unique_ptr<Config> s_config;
+
     Racer(const unsigned int& racer_number=1,
         const unsigned int& racer_postion=0)
         :m_racer_number(racer_number), m_position(racer_postion) {}

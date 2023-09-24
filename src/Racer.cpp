@@ -1,6 +1,8 @@
 #include "Racer.hpp"
 #include "Team.hpp"
 
+std::unique_ptr<Config> Racer::s_config = nullptr;
+
 std::ostream& operator<<(std::ostream& os, const Racer& racer) {
 
     return os <<"Active Racer's Number: "<< racer.m_racer_number
@@ -19,7 +21,7 @@ void Racer::race(
    
    while (counter < 100) {
 
-      std::this_thread::sleep_for(std::chrono::milliseconds(1));
+      std::this_thread::sleep_for(std::chrono::seconds(1));
       m_velocity=(rand()%5)+1;
       m_position+=m_velocity;
       counter+=m_velocity;
@@ -28,7 +30,8 @@ void Racer::race(
          
          if(counter > 100 && (this+1) != nullptr)
             (this+1)->m_position=m_position;
-            
+         
+         std::unique_lock<std::shared_mutex> lock(s_config->mutex_);
          std::cout<<*team;
       }
    }
