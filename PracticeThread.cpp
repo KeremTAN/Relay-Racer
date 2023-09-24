@@ -12,6 +12,7 @@ struct Config
 class MyClass {
 public:
     static Config* m_config;
+    
     MyClass(){};
     void MyMethod(int& i) {
         std::cout << i <<". MyMethod is running" << std::endl;

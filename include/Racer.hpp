@@ -12,21 +12,16 @@ class Team;
 class Racer {
 
 public:
-    Racer(const unsigned int& racer_number=1)
-        :m_racer_number(racer_number) {}
+    Racer(const unsigned int& racer_number=1,
+        const unsigned int& racer_postion=0)
+        :m_racer_number(racer_number), m_position(racer_postion) {}
 
     friend std::ostream& operator<<(std::ostream& os, const Racer& racer);
 
-    void operator()();
     void race(const Racer* const, const Team* const);
-    
-    void setPosition(unsigned int& newPosition);
     unsigned int getPosition() const;
-    unsigned int getVelocity() const;
-    unsigned int getRacerNumber() const;
         
 private:
-    //unsigned int m_team_id{};
     unsigned int m_position{};
     unsigned int m_racer_number{};
     unsigned int m_velocity{0};
