@@ -29,6 +29,7 @@ void Team::operator()(){
         m_racers[i].race(&m_racers[i-1], this);
     }
 
+    std::unique_lock<std::shared_mutex> lock(Racer::s_config->mutex_);
     Team::s_championsList.emplace_back(m_team_id);
 };
 
@@ -39,5 +40,5 @@ void Team::setPrintable(const bool& isPrintable) const { m_printable=isPrintable
 void Team::printChampions() {
 
     for(int i{}; i<s_championsList.size(); i++)
-        std::cout<<i+1 <<". is that  Team "<<s_championsList[i]<<'\n';
+        std::cout<<i+1 <<". is Team "<<s_championsList[i]<<'\n';
 }
