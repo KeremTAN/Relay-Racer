@@ -16,7 +16,8 @@ set(PROJECT_SOURCES
 
 set(PROJECT_HEADERS
     ${PROJECT_INCLUDE_DIR}/Racer.hpp
-    ${PROJECT_INCLUDE_DIR}/Team.hpp)
+    ${PROJECT_INCLUDE_DIR}/Team.hpp
+    ${PROJECT_INCLUDE_DIR}/InputReader.hpp)
 
 include_directories(${PROJECT_INCLUDE_DIR})
 

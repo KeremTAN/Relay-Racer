@@ -1,33 +1,21 @@
 #include <iostream>
+
 #include "Team.hpp"
+#include "InputReader.hpp"
 
 int main(int argc, char** argv){
 
     std::vector<Team> teams(400);
-    std::vector<int> printableTeams{1,3,4, 5, 6, 7};
+    std::vector<int> printableTeams{};
     Racer::s_config = std::make_unique<Config>();
 
     std::vector<std::thread> threads;
     threads.reserve(400);
 
-    for (int i = 1; i < argc; ++i) {
+    if(InputReader{}.selectPrintableTeams(argc, argv, printableTeams) == 1)
+        return 1;
 
-        int teamId = std::atoi(argv[i]);
-
-        if (teamId == 0 && argv[i][0] != '0') {
-            std::cerr << "Invalid Input: " << argv[i] << " is not a number." << std::endl;
-            return 1;
-        }
-
-        if (teamId < 1 || teamId > 400) {
-            std::cerr << "Invalid Input: " << argv[i] << " is not a number between 1 and 400." << std::endl;
-            return 1;
-        }
-
-        printableTeams.push_back(--teamId);
-    }
-
-    for(const int&  printableTeamIx: printableTeams)
+    for(const int& printableTeamIx: printableTeams)
         teams[printableTeamIx].setPrintable(1);
 
     for (int i = 0; i < teams.size(); ++i) {
@@ -39,4 +27,6 @@ int main(int argc, char** argv){
     }
 
     Team::printChampions();
+
+    return 0;
 }
