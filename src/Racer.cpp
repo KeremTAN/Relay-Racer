@@ -3,6 +3,11 @@
 
 std::unique_ptr<Config> Racer::s_config = nullptr;
 
+Racer::Racer(const unsigned int& racer_number, const unsigned int& racer_postion)
+   :m_racer_number(racer_number), m_position(racer_postion) {
+      srand (time(NULL));
+   }
+
 std::ostream& operator<<(std::ostream& os, const Racer& racer) {
 
     return os <<"Active Racer's Number: "<< racer.m_racer_number

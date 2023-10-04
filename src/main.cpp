@@ -15,7 +15,7 @@ int main(int argc, char** argv){
     if(InputReader{}.selectPrintableTeams(argc, argv, printableTeams) == 1)
         return 1;
 
-    for(const int& printableTeamIx: printableTeams)
+    for(const int& printableTeamIx : printableTeams)
         teams[printableTeamIx].setPrintable(1);
 
     for (int i = 0; i < teams.size(); ++i) {

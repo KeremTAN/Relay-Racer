@@ -19,9 +19,7 @@ class Racer {
 public:
     static std::unique_ptr<Config> s_config;
 
-    Racer(const unsigned int& racer_number=1,
-        const unsigned int& racer_postion=0)
-        :m_racer_number(racer_number), m_position(racer_postion) {}
+    Racer(const unsigned int& racer_number=1, const unsigned int& racer_postion=0);
 
     friend std::ostream& operator<<(std::ostream& os, const Racer& racer);
 

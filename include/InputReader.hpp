@@ -15,19 +15,20 @@ public:
 
         if (argc < 2) {
             std::cout << "Please, enter the integers between 1 and 400.\nEnter the 0 to end the entry process." << std::endl;
-             std::cout <<"As long as you do not enter 0 or an invalid input,\nthe all numbers you enter into the terminal up to 400 will continue to be read!\n" << std::endl;
+            std::cout <<"As long as you do not enter 0 or an invalid input,\nthe all numbers you enter into the terminal up to 400 will continue to be read!\n" << std::endl;
 
             std::cout << "Please, enter integer(s): ";
+
             while (true) {
                 std::string input{};
 
                 try {
                     std::cin >> input;
-                    
                     teamId = std::stoi(input);
                 }
                 catch(const std::exception& e) {
                     std::cerr << e.what() << '\n';
+
                     printCharacterError(input);
                     return 1;
                 }
@@ -46,7 +47,6 @@ public:
                 }
             }
         }
-
         else {
             for (int i = 1; i < argc; ++i) {
                 try {
